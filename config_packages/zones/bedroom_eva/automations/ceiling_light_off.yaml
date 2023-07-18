@@ -1,0 +1,16 @@
+---
+id: bedroom_eva_ceiling_light_off
+alias: Bedroom Eva - Ceiling light off
+max_exceeded: silent
+trigger:
+  - id: bedroom_eva_switch_bottom
+    platform: device
+    domain: hue
+    device_id: 91af78cb691a3d71628398d93e9a1405
+    type: initial_press
+    subtype: 2
+    unique_id: 539b6800-e8a1-46af-bd97-b064e521fe9a
+action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.bedroom_eva_lights_ceiling_off

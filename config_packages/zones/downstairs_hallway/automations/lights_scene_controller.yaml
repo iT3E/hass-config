@@ -1,0 +1,129 @@
+---
+id: downstairs_hallway_lights_scene_controller
+alias: Downstairs hallway - Lights - Scene controller
+mode: restart
+
+trigger:
+  - id: downstairs_hallway_switch_top
+    platform: device
+    domain: hue
+    device_id: 39cd9a1178e7f8b0a9e454922a40dd18
+    type: initial_press
+    subtype: 3
+    unique_id: 83f67854-5162-4ea2-b611-818f8319f88b
+
+  - id: downstairs_hallway_switch_bottom
+    platform: device
+    domain: hue
+    device_id: 39cd9a1178e7f8b0a9e454922a40dd18
+    type: initial_press
+    subtype: 4
+    unique_id: 3c0cbb77-00c4-4b9a-8bb7-4ab4e2b57daa
+
+  - id: downstairs_hallway_motion_detected
+    platform: state
+    entity_id: binary_sensor.downstairs_hallway_motion
+    to: 'on'
+  - id: downstairs_hallway_motion_cleared
+    platform: state
+    entity_id: binary_sensor.downstairs_hallway_motion
+    to: 'off'
+    for:
+      minutes: 2
+
+  - id: front_door_opened
+    platform: state
+    entity_id: binary_sensor.downstairs_hallway_front_door_contact
+    to: 'on'
+
+  - id: downstairs_living_room_door_opened
+    platform: state
+    entity_id: binary_sensor.living_room_door_contact
+    to: 'on'
+
+  - id: lights_turned_off
+    platform: state
+    entity_id: light.downstairs_hallway_ceiling
+    from: 'on'
+    to: 'off'
+
+variables:
+  scene_helper: input_select.downstairs_hallway_lights_scene
+  automatic_lights_duration: "{{ (states('input_number.downstairs_hallway_automatic_lights_duration') | float(0)) * 60 }}"
+
+action:
+  - alias: "choose scene based on trigger"
+    choose:
+      # Turn on with hallway switch
+      - conditions:
+          - condition: trigger
+            id: downstairs_hallway_switch_top
+        sequence:
+          - service: input_select.select_option
+            data:
+              entity_id: "{{ scene_helper }}"
+              option: "Full brightness"
+
+      # Turn on automatically
+      - conditions:
+          - and:
+              - condition: state
+                entity_id: binary_sensor.downstairs_hallway_automatic_lights
+                state: "on"
+                alias: Hallway autmatic lights enabled
+              - condition: state
+                entity_id: binary_sensor.downstairs_hallway_is_dark
+                state: "on"
+                alias: Hallway is dark
+              - or:
+                  - condition: trigger
+                    id: downstairs_hallway_motion_detected
+                  - condition: trigger
+                    id: front_door_opened
+                  - condition: trigger
+                    id: downstairs_living_room_door_opened
+        sequence:
+          - choose:
+              # Only set these scenes in the evening
+              - conditions:
+                  - or:
+                      - alias: "Late evening"
+                        condition: state
+                        entity_id: sensor.system_time_of_day_detailed
+                        state: "late_evening"
+                      - alias: "night"
+                        condition: state
+                        entity_id: sensor.system_time_of_day_detailed
+                        state: "night"
+                sequence:
+                  - service: input_select.select_option
+                    data:
+                      entity_id: "{{ scene_helper }}"
+                      option: "Dimmed"
+
+            # Select "Full brightness"
+            default:
+              - service: input_select.select_option
+                data:
+                  entity_id: "{{ scene_helper }}"
+                  option: "Full brightness"
+
+      # Select "off" scene
+      - conditions:
+          - or:
+              # Turned off manually
+              - condition: trigger
+                id: downstairs_hallway_switch_bottom
+              - condition: trigger
+                id: lights_turned_off
+              # Turn off automatically
+              - condition: trigger
+                id: automatic_lights_timer_finished
+              - condition: trigger
+                id: downstairs_hallway_motion_cleared
+
+        sequence:
+          - service: input_select.select_option
+            data:
+              entity_id: "{{ scene_helper }}"
+              option: "Off"

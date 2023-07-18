@@ -1,0 +1,15 @@
+---
+id: bedroom_ceiling_light_off
+alias: Bedroom - Ceiling light off
+trigger:
+  - id: bedroom_switch_bottom
+    platform: device
+    domain: hue
+    device_id: 5dd7987abfcc60204c7752b0ad06fdd6
+    type: initial_press
+    subtype: 4
+    unique_id: f234db3e-b3fb-40f3-857c-8ecd39815ac2
+action:
+  - service: scene.turn_on
+    data:
+      entity_id: scene.bedroom_lights_ceiling_off

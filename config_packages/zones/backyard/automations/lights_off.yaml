@@ -1,0 +1,14 @@
+---
+id: backyard_lights_off
+alias: Backyard - Lights off
+max_exceeded: silent
+trigger:
+  - id: utility_room_switch_bottom
+    platform: device
+    domain: hue
+    device_id: 17b4abf9c9be5049601d8c59995a94c1
+    type: initial_press
+    subtype: 4
+    unique_id: 3e9c5ce2-0da2-4f20-a23a-f072f0552e77
+action:
+  - scene: scene.backyard_lights_off
