@@ -1,6 +1,6 @@
 camera:
   - platform: xiaomi_cloud_map_extractor
-    host: 10.10.91.177
+    host: 10.10.91.110
     token: !env_var XIAOMI_VACUUM_TOKEN
     username: !env_var XIAOMI_CLOUD_USERNAME
     password: !env_var XIAOMI_CLOUD_PASSWORD
