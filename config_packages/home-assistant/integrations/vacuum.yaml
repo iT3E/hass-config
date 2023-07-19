@@ -5,6 +5,3 @@
 # https://www.home-assistant.io/components/vacuum/
 #
 vacuum:
-  - platform: xiaomi_miio
-    host: 10.10.91.177
-    token: !env_var XIAOMI_VACUUM_TOKEN
