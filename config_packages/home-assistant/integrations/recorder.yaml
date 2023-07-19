@@ -5,7 +5,7 @@
 # https://www.home-assistant.io/components/recorder/
 #
 recorder:
-  db_url: !env_var SECRET_RECORDER_DB_URL
+  db_url: !env_var RECORDER_DB_URL
 
   auto_purge: true
   purge_keep_days: 14
@@ -48,7 +48,5 @@ recorder:
       - sensor.living_area_vacuum_map
 
     entity_globs:
-      - sensor.highfell_*
-      - sensor.iphone_bernd_*
-      - sensor.iphone_man_yie_*
-      - sensor.macbook_bernd_*
+     # - sensor.highfell_*
+

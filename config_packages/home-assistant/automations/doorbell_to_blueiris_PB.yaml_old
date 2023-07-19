@@ -1,0 +1,33 @@
+#- alias: doorbell_to_blueiris2
+#  description: ''
+#  trigger:
+#    - type: sound
+#      platform: device
+#      device_id: e02a69e3c5c301668abf297da3d5d34c
+#      entity_id: binary_sensor.zwave_doorbell_siren_siren_active_3
+#      domain: binary_sensor
+#    - type: sound
+#      platform: device
+#      device_id: e02a69e3c5c301668abf297da3d5d34c
+#      entity_id: binary_sensor.zwave_doorbell_siren_siren_active_4
+#      domain: binary_sensor
+#  condition: []
+#  action:
+#    - service: notify.pushbullet_notify_ivan
+#      data:
+#        title: Front Door Camera
+#        data:
+#          url: 'https://blueiris.internal.tnwks.us/mjpg/FrontDoor/video.mjpg'
+#          ttl: 0
+#          priority: high
+#        message: Click Here!
+#    - service: notify.pushbullet_notify_megan
+#      data:
+#        message: Click Here!
+#        title: Front Door Camera
+#        data:
+#          url: 'https://blueiris.internal.tnwks.us/mjpg/FrontDoor/video.mjpg'
+#          ttl: 0
+#          priority: high
+#  mode: single
+

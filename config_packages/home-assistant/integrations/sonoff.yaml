@@ -1,0 +1,4 @@
+sonoff:
+  username: !env_var SONOFF_USERNAME
+  password: !env_var SONOFF_PASSWORD
+  sensors: [power, current, voltage]

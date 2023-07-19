@@ -6,6 +6,3 @@
 
 logger:
   default: info
-  logs:
-    homeassistant.components.xiaomi_miio.fan: critical
-    miio.device: critical

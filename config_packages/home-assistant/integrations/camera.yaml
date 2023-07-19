@@ -1,0 +1,18 @@
+camera:
+  - platform: xiaomi_cloud_map_extractor
+    host: 10.10.91.177
+    token: !env_var XIAOMI_VACUUM_TOKEN
+    username: !env_var XIAOMI_CLOUD_USERNAME
+    password: !env_var XIAOMI_CLOUD_PASSWORD
+    draw: ['all']
+    attributes:
+      - calibration_points
+
+  - platform: mjpeg
+    mjpeg_url: "http://10.10.60.210:81/mjpg/GrowRoom"
+    name: GrowRoom   
+
+  - platform: mjpeg
+    name: OctoPrint
+    still_image_url: http://10.10.91.172/webcam/?action=snapshot
+    mjpeg_url: http://10.10.91.172/webcam/?action=stream   
