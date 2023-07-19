@@ -8,11 +8,11 @@ camera:
     attributes:
       - calibration_points
 
-  - platform: mjpeg
-    mjpeg_url: "http://10.10.60.210:81/mjpg/GrowRoom"
-    name: GrowRoom   
+  # - platform: mjpeg
+  #   mjpeg_url: "http://10.10.60.210:81/mjpg/GrowRoom"
+  #   name: GrowRoom   
 
-  - platform: mjpeg
-    name: OctoPrint
-    still_image_url: http://10.10.91.172/webcam/?action=snapshot
-    mjpeg_url: http://10.10.91.172/webcam/?action=stream   
+  # - platform: mjpeg
+  #   name: OctoPrint
+  #   still_image_url: http://10.10.91.172/webcam/?action=snapshot
+  #   mjpeg_url: http://10.10.91.172/webcam/?action=stream   
