@@ -1,0 +1,17 @@
+kitchen_lights_off_multicast:
+  alias: Kitchen_Lights_Off_Multicast
+  sequence:
+    - service: zwave_js.multicast_set_value
+      data:
+        command_class: '38'
+        value: 0
+        property: targetValue
+      target:
+        entity_id:
+          - light.red_series_dimmer
+          - light.red_series_dimmer_3
+          - light.red_series_dimmer_4
+          - light.red_series_dimmer_5
+          - light.red_series_dimmer_6
+  mode: single
+

@@ -1,0 +1,21 @@
+lock_all_doors:
+    alias: Lock All Doors
+    sequence:
+      - device_id: f37c3225b1862a820531fa9dd65f0abc
+        domain: lock
+        entity_id: lock.key_free_push_button_deadbolt_2
+        type: lock
+      - device_id: c76f67de0f6dd54ef689d726cc96e70d
+        domain: lock
+        entity_id: lock.key_free_push_button_deadbolt_3
+        type: lock
+      - device_id: d9b48ad6fb7d5ab2d00103607627cb9b
+        domain: lock
+        entity_id: lock.key_free_push_button_deadbolt
+        type: lock
+      - device_id: f16a5bd8c688044dfcb04cdae80985be
+        domain: lock
+        entity_id: lock.door_lock
+        type: lock
+    mode: single
+

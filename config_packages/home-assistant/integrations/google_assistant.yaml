@@ -1,0 +1,19 @@
+google_assistant:
+  project_id: !env_var HASS_GOOGLE_PROJECT_ID
+  service_account:
+    private_key: !env_var HASS_GOOGLE_PRIVATE_KEY
+    client_email: !env_var HASS_GOOGLE_CLIENT_EMAIL
+  report_state: true
+  exposed_domains:
+    - script
+  entity_config:
+    script.vacuum_kitchen:
+      name: Script Vacuum Kitchen
+      expose: true
+      room: Kitchen
+    script.vacuum_livingroom:
+      name: Script Vacuum Living Room
+      expose: true
+    script.vacuum_playroom:
+      name: Script Vacuum Play Room
+      expose: true

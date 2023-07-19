@@ -1,0 +1,30 @@
+kitchen_lights_on:
+  alias: kitchen_lights_on
+  sequence:
+    - type: turn_on
+      device_id: 50f5385c44dc546097ac56de9a684ba0
+      entity_id: light.red_series_dimmer_6
+      domain: light
+    - type: turn_on
+      device_id: 64112504bd5539e094c093ced89289d9
+      entity_id: light.red_series_dimmer_5
+      domain: light
+    - type: turn_on
+      device_id: a49e1cd73282730f79e5c4ab535fa1d8
+      entity_id: light.red_series_dimmer_4
+      domain: light
+    - type: turn_on
+      device_id: 1ed506c087fd5dde54a08c4e67cb1d34
+      entity_id: light.red_series_dimmer_2
+      domain: light
+    - type: turn_on
+      device_id: 480cc9a81257fb0c78212b689e1ad8de
+      entity_id: light.red_series_dimmer
+      domain: light
+    - type: turn_on
+      device_id: 817fc66a8daa55a45b8ce6609ae26bf9
+      entity_id: light.red_series_dimmer_3
+      domain: light
+  mode: single
+
+
