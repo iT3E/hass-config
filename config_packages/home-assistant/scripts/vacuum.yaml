@@ -3,7 +3,7 @@ vacuum_kitchen:
       sequence:
         - service: vacuum.send_command
           data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
+            entity_id: vacuum.robovac
             command: app_zoned_clean
             params: [[19076,25043,23176,29193,1],[23248,25076,29148,28426,1]]
 
@@ -12,7 +12,7 @@ vacuum_livingroom:
       sequence:
         - service: vacuum.send_command
           data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
+            entity_id: vacuum.robovac
             command: app_zoned_clean
             params: [[19973,17943,29223,24993,1],[21405,14460,27505,18510,1]]
 
@@ -22,6 +22,6 @@ vacuum_playroom:
       sequence:
         - service: vacuum.send_command
           data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
+            entity_id: vacuum.robovac
             command: app_zoned_clean
             params: [[23294,28474,29694,32274,1],[20347,29267,24297,32817,1]]
